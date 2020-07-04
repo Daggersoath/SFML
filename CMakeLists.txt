@@ -78,8 +78,8 @@ endif()
 # add options to select which modules to build
 sfml_set_option(SFML_BUILD_WINDOW TRUE BOOL "TRUE to build SFML's Window module. This setting is ignored, if the graphics module is built.")
 sfml_set_option(SFML_BUILD_GRAPHICS TRUE BOOL "TRUE to build SFML's Graphics module.")
-sfml_set_option(SFML_BUILD_AUDIO TRUE BOOL "TRUE to build SFML's Audio module.")
-sfml_set_option(SFML_BUILD_NETWORK TRUE BOOL "TRUE to build SFML's Network module.")
+sfml_set_option(SFML_BUILD_AUDIO FALSE BOOL "TRUE to build SFML's Audio module.")
+sfml_set_option(SFML_BUILD_NETWORK FALSE BOOL "TRUE to build SFML's Network module.")
 
 # add an option for building the API documentation
 sfml_set_option(SFML_BUILD_DOC FALSE BOOL "TRUE to generate the API documentation, FALSE to ignore it")
@@ -166,7 +166,7 @@ endif()
 # allow not using bundled dependencies with a switch
 # (except for stb_image)
 # yes this is horrible, but GLOB_RECURSE sucks
-sfml_set_option(SFML_USE_SYSTEM_DEPS FALSE BOOL "TRUE to use system dependencies, FALSE to use the bundled ones.")
+sfml_set_option(SFML_USE_SYSTEM_DEPS TRUE BOOL "TRUE to use system dependencies, FALSE to use the bundled ones.")
 if(SFML_USE_SYSTEM_DEPS)
     if(SFML_INSTALL_XCODE_TEMPLATES)
         message(FATAL_ERROR "XCode templates installation cannot be used with the SFML_USE_SYSTEM_DEPS option (the bundled frameworks are required.)")
