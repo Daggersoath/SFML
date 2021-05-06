@@ -25,6 +25,7 @@
 #ifndef SFML_VECTOR2_HPP
 #define SFML_VECTOR2_HPP
 
+#include <cmath>
 
 namespace sf
 {
@@ -68,6 +69,48 @@ public:
     ////////////////////////////////////////////////////////////
     template <typename U>
     explicit Vector2(const Vector2<U>& vector);
+
+    inline T Length()
+    {
+        return std::sqrt(Length2());
+    }
+
+    inline T Length2()
+    {
+        return x * x + y * y;
+    }
+
+    inline Vector2<T> Rotate(float theta)
+    {
+        float cs = std::cos(theta);
+        float sn = std::sin(theta);
+
+        return {x * cs - y * sn, x * sn + y * cs};
+    }
+
+    template <typename U>
+    Vector2<T> operator/(U divider)
+    {
+        return {x / divider, y / divider};
+    }
+
+    template <typename U>
+    Vector2<T> operator/(Vector2<U> divider)
+    {
+        return {x / divider.x, y / divider.y};
+    }
+
+    template <typename U>
+    Vector2<T> operator*(U multiplier)
+    {
+        return {x * multiplier, y * multiplier};
+    }
+
+    template <typename U>
+    Vector2<T> operator*(Vector2<U> multiplier)
+    {
+        return {x * multiplier.x, y * multiplier.y};
+    }
 
     ////////////////////////////////////////////////////////////
     // Member data
